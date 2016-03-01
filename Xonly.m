@@ -51,4 +51,4 @@ xlabel('Time (s)');
 
 hold off;
 
-
+print('-dpng','-r300','Xonly.png');
