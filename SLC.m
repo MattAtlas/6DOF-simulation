@@ -64,14 +64,15 @@ for n=1:N-1
 end
 figure(1);
 hold on;
-%[AX,H1,H2] = plotyy(t(2:N-1),x(1,2:N-1),t(2:N-1),u(2:N-1),'plot');
+
 plot(t(1:N-1),x_inner(1,1:N-1),'b');
 plot(t(1:N-1),x_inner(2,1:N-1),'r');
 plot(t(1:N-1),x_inner(3,1:N-1),'g');
 plot(t(1:N-1),u_inner(1:N-1),'k');
 legend('theta (rad)','theta dot (rad/s)','motor (Nm)','input u (Nm)');
 title('Inner Loop Step Characteristics');
-xlabel('Time in s');
+xlabel('Time (s)');
+print('-dpng','-r300','SLC inner loop.png');
 
 hold off;
 
@@ -81,12 +82,8 @@ plot(t(1:N-1),x_outer(1,1:N-1),'b');
 plot(t(1:N-1),x_outer(2,1:N-1),'r');
 plot(t(1:N-1),u_outer(1:N-1),'k');
 legend('x (m)','x dot (m/s)','theta ref (rad)');
-xlabel('Time in s');
+xlabel('Time (s)');
 title('Outer Loop Step Characteristics');
-% xlabel('Time in s');
-% 
-% set(get(AX(1),'Ylabel'),'String','Pos in x')
-% set(get(AX(2),'Ylabel'),'String','Normalized input u')
+print('-dpng','-r300','SLC outer loop.png');
 
-eig(A_inner)
-eig(A_inner-B_inner*K_inner)
+hold off;
